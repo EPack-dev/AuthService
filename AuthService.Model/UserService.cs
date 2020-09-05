@@ -12,8 +12,10 @@ namespace AuthService.Model
             _accountRepository = accountRepository;
         }
 
-        public async Task<User> Register(string login, string password, UserRole role)
+        public async Task<User> Register(string login, string password)
         {
+            int accountsCount = await _accountRepository.GetCount();
+            UserRole role = accountsCount > 0 ? UserRole.Regular : UserRole.Admin;
             var account = new Account(login, password, role);
             await _accountRepository.Add(account);
 

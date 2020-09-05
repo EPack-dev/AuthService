@@ -5,7 +5,7 @@ namespace AuthService.Model
 {
     public interface IUserService
     {
-        Task<User> Register(string login, string password, UserRole role);
+        Task<User> Register(string login, string password);
 
         Task<User> Authenticate(string login, string password);
 

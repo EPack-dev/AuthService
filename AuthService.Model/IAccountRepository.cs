@@ -9,6 +9,8 @@ namespace AuthService.Model
 
         Task<List<Account>> GetAll();
 
+        Task<int> GetCount();
+
         Task<Account> Add(Account account);
 
         Task Delete(string login);
