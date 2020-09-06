@@ -5,11 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.7" />
+        <PackageReference Include="MongoDB.Driver" Version="2.11.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AuthService.Application\AuthService.Application.csproj" />
       <ProjectReference Include="..\AuthService.Model\AuthService.Model.csproj" />
     </ItemGroup>
 </Project>

@@ -11,7 +11,7 @@ namespace AuthService.Model
             Login = login;
             Role = role;
             Created = DateTime.UtcNow;
-            CreatePasswordHash(password);
+            HashPassword(password);
         }
 
         public string Login { get; private set; }
@@ -31,7 +31,7 @@ namespace AuthService.Model
             return computedHash.SequenceEqual(PasswordHash);
         }
 
-        private void CreatePasswordHash(string password)
+        private void HashPassword(string password)
         {
             using var hmac = new HMACSHA512();
             PasswordSalt = hmac.Key;

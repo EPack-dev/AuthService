@@ -7,14 +7,15 @@ namespace AuthService.Model
 {
     public class UserService : IUserService
     {
-        public UserService(IAccountRepository accountRepository)
+        public UserService(IAccountRepository accountRepository, ITokenProvider tokenProvider)
         {
             _accountRepository = accountRepository;
+            _tokenProvider = tokenProvider;
         }
 
         public async Task<User> Register(string login, string password)
         {
-            int accountsCount = await _accountRepository.GetCount();
+            long accountsCount = await _accountRepository.Count();
             UserRole role = accountsCount > 0 ? UserRole.Regular : UserRole.Admin;
             var account = new Account(login, password, role);
             await _accountRepository.Add(account);
@@ -36,7 +37,8 @@ namespace AuthService.Model
                 throw new ApplicationException("Authentication failed.");
             }
 
-            return new User(account);
+            string token = _tokenProvider.GenerateToken(account.Login, account.Role);
+            return new User(account, token);
         }
 
         public async Task<User> GetByLogin(string login)
@@ -62,5 +64,6 @@ namespace AuthService.Model
         }
 
         private readonly IAccountRepository _accountRepository;
+        private readonly ITokenProvider _tokenProvider;
     }
 }

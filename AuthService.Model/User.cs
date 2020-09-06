@@ -11,10 +11,18 @@ namespace AuthService.Model
             Created = account.Created;
         }
 
+        public User(Account account, string token)
+            : this(account)
+        {
+            Token = token;
+        }
+
         public string Login { get; }
 
         public UserRole Role { get; }
 
         public DateTime Created { get; }
+
+        public string? Token { get; }
     }
 }
