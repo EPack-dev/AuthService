@@ -11,8 +11,6 @@ namespace AuthService.Model
 
         Task<User> GetByLogin(string login);
 
-        Task<User?> GetByToken(string token);
-
         Task<List<User>> GetAll();
 
         Task Delete(string login);

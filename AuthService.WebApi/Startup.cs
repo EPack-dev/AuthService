@@ -49,11 +49,8 @@ namespace AuthService.WebApi
                     {
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(AuthOptions.Key)),
-                        ValidateIssuer = true,
-                        ValidIssuer = AuthOptions.Issuer,
-                        ValidateAudience = true,
-                        ValidAudience = AuthOptions.Audience,
-                        ValidateLifetime = true
+                        ValidateIssuer = false,
+                        ValidateAudience = false
                     };
                 });
 

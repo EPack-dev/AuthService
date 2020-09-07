@@ -17,12 +17,18 @@ namespace AuthService.WebApi
                     Version = "v1.0",
                     Description = "AuthService.WebApi"
                 });
-                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+
+                options.CustomSchemaIds(SchemaIdStrategy);
+
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
-                    In = ParameterLocation.Header,
-                    Description = "Please insert JWT with Bearer into field",
                     Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description =
+                        "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
                 });
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
@@ -38,7 +44,6 @@ namespace AuthService.WebApi
                         new string[] { }
                     }
                 });
-                options.CustomSchemaIds(SchemaIdStrategy);
             });
         }
 
