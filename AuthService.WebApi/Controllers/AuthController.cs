@@ -60,11 +60,11 @@ namespace AuthService.WebApi.Controllers
         }
 
         // Use custom attribute with enum
-        [Authorize(Roles = "admin")]
+        // [Authorize(Roles = "Admin")]
         [HttpGet("admin")]
         public ActionResult<string> GetAdmin()
         {
-            return Ok("Ok - admin");
+            return Ok("Ok - Admin");
         }
 
         private readonly IUserService _userService;

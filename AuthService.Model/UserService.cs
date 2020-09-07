@@ -52,6 +52,17 @@ namespace AuthService.Model
             return new User(account);
         }
 
+        public async Task<User?> GetByToken(string token)
+        {
+            string? login = _tokenProvider.ValidateTokenAndGetLogin(token);
+            if (login != null)
+            {
+                return await GetByLogin(login);
+            }
+
+            return null;
+        }
+
         public async Task<List<User>> GetAll()
         {
             List<Account> accounts = await _accountRepository.GetAll();
