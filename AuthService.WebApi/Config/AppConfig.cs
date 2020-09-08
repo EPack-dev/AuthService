@@ -2,11 +2,8 @@
 {
     public class AppConfig
     {
-        public AppConfig()
-        {
-            Mongo = new MongoConfig();
-        }
+        public MongoConfig Mongo { get; set; } = default!;
 
-        public MongoConfig Mongo { get; set; }
+        public AuthConfig Auth { get; set; } = default!;
     }
 }
