@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AuthService.Model;
 using AuthService.WebApi.Database;
@@ -37,12 +36,6 @@ namespace AuthService.WebApi
 
         public async Task Add(Account account)
         {
-            Account existing = await _dbContext.Accounts.Find(x => x.Login == account.Login).FirstOrDefaultAsync();
-            if (existing != null)
-            {
-                throw new ApplicationException("Login already exist.");
-            }
-
             await _dbContext.Accounts.InsertOneAsync(account);
         }
 

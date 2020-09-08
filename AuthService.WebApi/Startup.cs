@@ -45,6 +45,7 @@ namespace AuthService.WebApi
             }
 
             app.UseSwaggerDocumentation();
+            app.UseExceptionMiddleware();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

@@ -21,7 +21,7 @@ namespace AuthService.Tests.Model
             var tokenProvider = new Mock<ITokenProvider>();
 
             var usersService = new UserService(accountRepository.Object, tokenProvider.Object);
-            User user = await usersService.Register("login", "pwd");
+            User user = await usersService.Register("login", "pwds11");
 
             Assert.AreEqual(expectedRole, user.Role);
             accountRepository.Verify(x => x.Count(), Times.Once);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 
 namespace AuthService.Model
@@ -8,6 +9,9 @@ namespace AuthService.Model
     {
         public Account(string login, string password, UserRole role)
         {
+            ValidateLogin(login);
+            ValidatePassword(password);
+
             Login = login;
             Role = role;
             Created = DateTime.UtcNow;
@@ -36,6 +40,22 @@ namespace AuthService.Model
             using var hmac = new HMACSHA512();
             PasswordSalt = hmac.Key;
             PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+        }
+
+        private void ValidateLogin(string login)
+        {
+            if (login.Length < 3)
+            {
+                throw new ServiceException("Invalid login.", HttpStatusCode.BadRequest);
+            }
+        }
+
+        private void ValidatePassword(string password)
+        {
+            if (password.Length < 6)
+            {
+                throw new ServiceException("Invalid password.", HttpStatusCode.BadRequest);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace AuthService.Model
@@ -15,8 +15,11 @@ namespace AuthService.Model
 
         public async Task<User> Register(string login, string password)
         {
+            await CheckUniqLogin(login);
+
             long accountsCount = await _accountRepository.Count();
             UserRole role = accountsCount > 0 ? UserRole.Regular : UserRole.Admin;
+
             var account = new Account(login, password, role);
             await _accountRepository.Add(account);
 
@@ -28,13 +31,13 @@ namespace AuthService.Model
             Account? account = await _accountRepository.GetByLogin(login);
             if (account is null)
             {
-                throw new ApplicationException("Authentication failed.");
+                throw new ServiceException("Authentication failed.", HttpStatusCode.BadRequest);
             }
 
             bool correctPassword = account.VerifyPassword(password);
             if (!correctPassword)
             {
-                throw new ApplicationException("Authentication failed.");
+                throw new ServiceException("Authentication failed.", HttpStatusCode.BadRequest);
             }
 
             string token = _tokenProvider.GenerateToken(account.Login, account.Role);
@@ -46,7 +49,7 @@ namespace AuthService.Model
             Account? account = await _accountRepository.GetByLogin(login);
             if (account is null)
             {
-                throw new ApplicationException($"Login '{login}' not found.");
+                throw new ServiceException($"Login '{login}' not found.", HttpStatusCode.BadRequest);
             }
 
             return new User(account);
@@ -60,7 +63,22 @@ namespace AuthService.Model
 
         public async Task Delete(string login)
         {
+            Account? account = await _accountRepository.GetByLogin(login);
+            if (account is null)
+            {
+                throw new ServiceException($"Login '{login}' not found.", HttpStatusCode.BadRequest);
+            }
+
             await _accountRepository.Delete(login);
+        }
+
+        private async Task CheckUniqLogin(string login)
+        {
+            Account? foundAccount = await _accountRepository.GetByLogin(login);
+            if (foundAccount != null)
+            {
+                throw new ServiceException("Login taken.", HttpStatusCode.Conflict);
+            }
         }
 
         private readonly IAccountRepository _accountRepository;

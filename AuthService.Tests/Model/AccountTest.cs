@@ -22,9 +22,9 @@ namespace AuthService.Tests.Model
         [DataRow("P@ssword!", "P@ssword!", true)]
         [DataRow("123-qwe-!@#", "123-qwe-!@#", true)]
         [DataRow("   -   ", "   -   ", true)]
-        [DataRow("Pass", "pass", false)]
+        [DataRow("Pass-111", "pass-111", false)]
         [DataRow("password1", "password2", false)]
-        [DataRow("1234", "123", false)]
+        [DataRow("12345678", "1234567", false)]
         public void VerifyPasswordIsCorrect(string password1, string password2, bool compareResult)
         {
             var account = new Account("some_login", password1, UserRole.Regular);

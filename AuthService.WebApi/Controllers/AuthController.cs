@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AuthService.Model;
 using AuthService.WebApi.Dto;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -17,6 +18,9 @@ namespace AuthService.WebApi.Controllers
         }
 
         [HttpPost("register")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<ActionResult<UserDto>> Register([FromBody] AccountDto dto)
         {
             User user = await _userService.Register(dto.Login, dto.Password);
@@ -24,6 +28,8 @@ namespace AuthService.WebApi.Controllers
         }
 
         [HttpPost("login")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<UserDto>> Authenticate([FromBody] AccountDto dto)
         {
             User user = await _userService.Authenticate(dto.Login, dto.Password);
