@@ -1,9 +1,13 @@
-﻿namespace AuthService.WebApi.Dto
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AuthService.WebApi.Dto
 {
     public class AccountDto
     {
-        public string Login { get; set; } = default!;
+        [Required]
+        public string? Login { get; set; }
 
-        public string Password { get; set; } = default!;
+        [Required]
+        public string? Password { get; set; }
     }
 }
