@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <Project>
-      <PropertyGroup>
+<Project>
+    <PropertyGroup>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <WarningsAsErrors />
-      </PropertyGroup>
+    </PropertyGroup>
 
-      <PropertyGroup>
-        <LangVersion>8.0</LangVersion>
+    <PropertyGroup>
+        <LangVersion>9.0</LangVersion>
         <Nullable>enable</Nullable>
-      </PropertyGroup>
+    </PropertyGroup>
 
-      <ItemGroup>
-        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers"/>
+    <ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers" />
         <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json">
-          <Link>stylecop.json</Link>
+            <Link>stylecop.json</Link>
         </AdditionalFiles>
-      </ItemGroup>
+    </ItemGroup>
 
     <ItemGroup>
         <None Include="$(MSBuildThisFileDirectory)standard.ruleset" Link="standard.ruleset" />
@@ -24,4 +24,4 @@
     <PropertyGroup>
         <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)standard.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
-  </Project>
+</Project>
