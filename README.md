@@ -1,1 +1,1 @@
-# .Net JWT auth service
+# .NET JWT auth service
