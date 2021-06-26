@@ -7,6 +7,10 @@ namespace AuthService.Model
 {
     public class Account
     {
+        private Account()
+        {
+        }
+
         public Account(string login, string password, UserRole role)
         {
             ValidateLogin(login);
@@ -18,11 +22,11 @@ namespace AuthService.Model
             HashPassword(password);
         }
 
-        public string Login { get; private set; }
+        public string Login { get; private set; } = default!;
 
-        public UserRole Role { get; private set; }
+        public UserRole Role { get; private set; } = default!;
 
-        public DateTime Created { get; private set; }
+        public DateTime Created { get; private set; } = default!;
 
         public byte[] PasswordHash { get; private set; } = default!;
 

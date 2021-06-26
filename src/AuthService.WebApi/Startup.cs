@@ -1,8 +1,9 @@
 using System.Text;
 using System.Text.Json.Serialization;
+using AuthService.Application;
+using AuthService.EfCorePostgresProvider;
 using AuthService.Model;
 using AuthService.WebApi.Config;
-using AuthService.WebApi.Database;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,8 +27,9 @@ namespace AuthService.WebApi
         {
             AppConfig config = AddConfig(services);
 
-            services.AddSingleton<AppDbContext>();
-            services.AddSingleton<IAccountRepository, AccountRepository>();
+            services.AddAutoMapper(typeof(EntitiesMappingProfile));
+            services.AddDbContext<AppDbContext>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddSwaggerDocumentation();
             services
                 .AddControllers()
