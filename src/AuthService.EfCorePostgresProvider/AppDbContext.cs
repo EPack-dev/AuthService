@@ -12,11 +12,6 @@ namespace AuthService.EfCorePostgresProvider
 
         public DbSet<AccountEntity> Accounts => Set<AccountEntity>();
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql("connection-string");
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AccountEntity>()

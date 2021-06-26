@@ -7,6 +7,7 @@ using AuthService.WebApi.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +29,8 @@ namespace AuthService.WebApi
             AppConfig config = AddConfig(services);
 
             services.AddAutoMapper(typeof(EntitiesMappingProfile));
-            services.AddDbContext<AppDbContext>();
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("Postgres")));
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddSwaggerDocumentation();
             services
@@ -58,7 +60,6 @@ namespace AuthService.WebApi
         {
             var appConfig = new AppConfig();
             Configuration.Bind(appConfig);
-            services.AddSingleton(appConfig.Mongo);
             services.AddSingleton(appConfig.Auth);
 
             return appConfig;

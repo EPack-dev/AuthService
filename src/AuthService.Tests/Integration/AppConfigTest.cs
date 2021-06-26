@@ -10,20 +10,6 @@ namespace AuthService.Tests.Integration
     public class AppConfigTest
     {
         [TestMethod]
-        public void MongoConfigBindIsCorrect()
-        {
-            var factory = new WebApplicationFactory<Startup>();
-            using IServiceScope scope = factory.Services.CreateScope();
-            MongoConfig mongoConfig = scope.ServiceProvider.GetRequiredService<MongoConfig>();
-
-            Assert.AreEqual("AuthService", mongoConfig.Database);
-            Assert.AreEqual("localhost", mongoConfig.Host);
-            Assert.AreEqual(27017, mongoConfig.Port);
-            Assert.AreEqual("root", mongoConfig.User);
-            Assert.AreEqual("password", mongoConfig.Password);
-        }
-
-        [TestMethod]
         public void AuthConfigBindIsCorrect()
         {
             var factory = new WebApplicationFactory<Startup>();
