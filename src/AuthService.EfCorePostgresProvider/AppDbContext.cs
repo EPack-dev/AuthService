@@ -17,6 +17,10 @@ namespace AuthService.EfCorePostgresProvider
             modelBuilder.Entity<AccountEntity>()
                 .ToTable("accounts")
                 .HasKey(x => x.Login);
+
+            modelBuilder.Entity<AccountEntity>()
+                .Property(e => e.Role)
+                .HasConversion<string>();
         }
     }
 }

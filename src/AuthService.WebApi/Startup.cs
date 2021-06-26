@@ -41,7 +41,7 @@ namespace AuthService.WebApi
             services.AddScoped<IUserService, UserService>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDbContext dbContext)
         {
             if (env.IsDevelopment())
             {
@@ -54,6 +54,8 @@ namespace AuthService.WebApi
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+            dbContext.Database.EnsureCreated();
         }
 
         private AppConfig AddConfig(IServiceCollection services)
