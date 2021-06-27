@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AuthService.WebApi.Controllers
+namespace AuthService.WebApp.Controllers
 {
     [ApiController]
     [Route("api/example")]

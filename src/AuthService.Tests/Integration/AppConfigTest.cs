@@ -1,5 +1,5 @@
-﻿using AuthService.WebApi;
-using AuthService.WebApi.Config;
+﻿using AuthService.WebApp;
+using AuthService.WebApp.Config;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

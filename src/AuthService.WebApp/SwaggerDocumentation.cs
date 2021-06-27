@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace AuthService.WebApi
+namespace AuthService.WebApp
 {
     internal static class SwaggerDocumentation
     {
@@ -13,9 +13,9 @@ namespace AuthService.WebApi
             {
                 options.SwaggerDoc("v1.0", new OpenApiInfo
                 {
-                    Title = "AuthService.WebApi",
+                    Title = "AuthService.WebApp",
                     Version = "v1.0",
-                    Description = "AuthService.WebApi"
+                    Description = "AuthService.WebApp"
                 });
 
                 options.CustomSchemaIds(SchemaIdStrategy);
@@ -50,7 +50,7 @@ namespace AuthService.WebApi
         internal static void UseSwaggerDocumentation(this IApplicationBuilder app)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "AuthService.WebApi V1.0"); });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "AuthService.WebApp V1.0"); });
         }
 
         private static string SchemaIdStrategy(Type currentClass)

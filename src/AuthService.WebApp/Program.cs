@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace AuthService.WebApi
+namespace AuthService.WebApp
 {
     public class Program
     {

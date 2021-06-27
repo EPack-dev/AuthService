@@ -1,4 +1,4 @@
-﻿namespace AuthService.WebApi.Config
+﻿namespace AuthService.WebApp.Config
 {
     public class AuthConfig
     {

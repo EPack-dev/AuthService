@@ -18,8 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\AuthService.Model\AuthService.Model.csproj" />
-        <ProjectReference Include="..\AuthService.WebApi\AuthService.WebApi.csproj" />
+        <ProjectReference Include="..\AuthService.WebApp\AuthService.WebApp.csproj" />
         <ProjectReference Include="..\AuthService.Application\AuthService.Application.csproj" />
         <ProjectReference Include="..\AuthService.EfCorePostgresProvider\AuthService.EfCorePostgresProvider.csproj" />
     </ItemGroup>

@@ -3,11 +3,11 @@ WORKDIR /app
 COPY src ./
 RUN dotnet restore
 
-WORKDIR /app/AuthService.WebApi
+WORKDIR /app/AuthService.WebApp
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/AuthService.WebApi/out .
+COPY --from=build /app/AuthService.WebApp/out .
 
-ENTRYPOINT ["dotnet", "AuthService.WebApi.dll"]
+ENTRYPOINT ["dotnet", "AuthService.WebApp.dll"]

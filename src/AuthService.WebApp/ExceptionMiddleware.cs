@@ -2,11 +2,11 @@
 using System.Text.Json;
 using System.Threading.Tasks;
 using AuthService.Model;
-using AuthService.WebApi.Dto;
+using AuthService.WebApp.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace AuthService.WebApi
+namespace AuthService.WebApp
 {
     public class ExceptionMiddleware
     {

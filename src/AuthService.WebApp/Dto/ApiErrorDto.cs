@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AuthService.WebApi.Dto
+namespace AuthService.WebApp.Dto
 {
     public class ApiErrorDto
     {

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using AuthService.Application;
 using AuthService.EfCorePostgresProvider;
 using AuthService.Model;
-using AuthService.WebApi.Config;
+using AuthService.WebApp.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
-namespace AuthService.WebApi
+namespace AuthService.WebApp
 {
     public class Startup
     {

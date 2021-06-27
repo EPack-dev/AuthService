@@ -1,12 +1,12 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using AuthService.Model;
-using AuthService.WebApi.Dto;
+using AuthService.WebApp.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace AuthService.WebApi.Controllers
+namespace AuthService.WebApp.Controllers
 {
     [ApiController]
     [Route("auth")]

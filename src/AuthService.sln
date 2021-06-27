@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService.Model", "AuthSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService.Tests", "AuthService.Tests\AuthService.Tests.csproj", "{602D50FA-1905-4E59-8311-39D02564CD84}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService.WebApi", "AuthService.WebApi\AuthService.WebApi.csproj", "{0A4F5726-BD3D-45D9-8DD0-03A3C2EF7E13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService.WebApp", "AuthService.WebApp\AuthService.WebApp.csproj", "{0A4F5726-BD3D-45D9-8DD0-03A3C2EF7E13}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.EfCorePostgresProvider", "AuthService.EfCorePostgresProvider\AuthService.EfCorePostgresProvider.csproj", "{D0853A79-746A-470C-BE00-7FEEA8B606E7}"
 EndProject

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace AuthService.WebApi
+namespace AuthService.WebApp
 {
     public static class ExceptionMiddlewareExtension
     {

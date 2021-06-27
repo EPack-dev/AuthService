@@ -1,6 +1,6 @@
 ﻿using AuthService.Model;
 
-namespace AuthService.WebApi.Dto
+namespace AuthService.WebApp.Dto
 {
     public class UserWithTokenDto : UserDto
     {

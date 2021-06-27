@@ -3,10 +3,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AuthService.Model;
-using AuthService.WebApi.Config;
+using AuthService.WebApp.Config;
 using Microsoft.IdentityModel.Tokens;
 
-namespace AuthService.WebApi
+namespace AuthService.WebApp
 {
     public class JwtTokenProvider : ITokenProvider
     {
