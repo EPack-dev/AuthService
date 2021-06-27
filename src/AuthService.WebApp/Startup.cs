@@ -50,6 +50,8 @@ namespace AuthService.WebApp
 
             app.UseSwaggerDocumentation();
             app.UseExceptionMiddleware();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
