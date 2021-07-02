@@ -35,7 +35,7 @@ jobs:
           password: ${{ secrets.CONTAINER_REGISTRY_KEY }}
 
       - name: Docker build
-        run: docker build . --tag cr.yandex/crpmoh45s6vnpdu1n8p7/auth-service:v${{github.run_number}}
+        run: docker build . --tag cr.yandex/crprhq0ifrs91id3rb4a/auth-service:v${{github.run_number}}
 
       - name: Docker push
-        run: docker push cr.yandex/crpmoh45s6vnpdu1n8p7/auth-service:v${{github.run_number}}
+        run: docker push cr.yandex/crprhq0ifrs91id3rb4a/auth-service:v${{github.run_number}}
